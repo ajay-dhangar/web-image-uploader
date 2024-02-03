@@ -1,5 +1,3 @@
-
-https://github.com/Ajay-Dhangar/web-image-uploader/assets/99037494/610af4d6-f9e2-4ef3-86ac-1312de3dc7c5
 # Web Image Uploader
 
 A web application for uploading and displaying images with dynamic styling. This project is built using HTML, CSS, JavaScript, Node.js, and Express. It includes features like image scaling, animations, and real-time updates.
@@ -15,11 +13,7 @@ A web application for uploading and displaying images with dynamic styling. This
 
 ## Getting Started
 
-![image](https://github.com/Ajay-Dhangar/web-image-uploader/assets/99037494/bd1b0e41-42ba-4aff-b238-b3eb3b695b53)
-
-![image](https://github.com/Ajay-Dhangar/web-image-uploader/assets/99037494/52a4999c-504c-4b88-b63a-1a93316b7809)
-
-
+https://github.com/Ajay-Dhangar/web-image-uploader/assets/99037494/610af4d6-f9e2-4ef3-86ac-1312de3dc7c5
 
 ### Prerequisites
 
