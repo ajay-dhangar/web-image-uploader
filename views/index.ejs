@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #45a049;
+        }
+
+        .custom-file-upload input {
+            display: none;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+        }
+
+        #uploadedImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        #imageContainer:hover #uploadedImage {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="fileInput" class="custom-file-upload">
+            <span>Choose Image</span>
+            <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" onchange="handleFileSelect()">
+        </label>
+        <div class="image-container" id="imageContainer">
+            <img id="uploadedImage" alt="Uploaded Image">
+        </div>
+    </div>
+
+    <script>
+        function handleFileSelect() {
+    const files = document.getElementById('fileInput').files;
+
+    // Check if files are selected
+    if (files.length === 0) {
+        alert('Please select an image.');
+        return;
+    }
+
+    // Create FormData object to send image to the server
+    const formData = new FormData();
+    formData.append('image', files[0]);
+
+    // Send the image to the server using fetch API
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display the uploaded image on the page
+        const imageContainer = document.getElementById('imageContainer');
+        const uploadedImage = document.getElementById('uploadedImage');
+
+        uploadedImage.src = `/uploads/${data.filename}`;
+        imageContainer.style.display = 'block';
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+    </script>
+</body>
+</html>
